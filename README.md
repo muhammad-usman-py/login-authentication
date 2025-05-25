@@ -1,29 +1,26 @@
-# Python User Authentication System
+# 🔐 Python User Authentication System
 
 This project demonstrates a simple command-line user authentication system in Python, featuring user registration, password management, and access control using decorators.
 
-## Features
+## ✨ Features
 
-- **User Registration:** Allows new users to register with a unique username and password.
-- **Password Change:** Enables existing users to update their password securely.
-- **Login Authentication:** Validates user credentials before granting access to a dummy dashboard.
-- **Decorator-Based Protection:** Uses a decorator to wrap protected functions and enforce authentication attempts.
+- 🧾 **User Registration:** Register new users with a unique username and password.
+- 🔑 **Password Change:** Securely update an existing user's password.
+- 🔐 **Login Authentication:** Validate credentials before accessing protected features.
+- 🛡 **Decorator-Based Protection:** Use decorators to enforce login on sensitive functions.
 
-## Code Overview
+## 🧠 Code Overview
 
 ```python
 from functools import wraps
 import getpass
 
-# Predefined valid users
 Valid_users = {
     "admin": "2555",
     "user": "1234"
 }
 
 def registration():
-    """Register a new user by prompting for a username and password.
-    Checks for duplicate usernames and stores new credentials."""
     username = input("Enter your username: ")
     if username in Valid_users:
         print(f"❗ Username '{username}' already exists.")
@@ -35,8 +32,6 @@ def registration():
     print("-" * 40)
 
 def change_password():
-    """Change password for an existing user by validating the old password
-    and updating to a new one."""
     usernam = input("Enter user name: ")
     if usernam not in Valid_users:
         print(f"❗ User '{usernam}' not found.")
@@ -53,8 +48,6 @@ def change_password():
     print("-" * 40)
 
 def aunthenticator(func):
-    """Decorator to protect functions by requiring user login.
-    Allows up to 3 login attempts before blocking."""
     @wraps(func)
     def wrapper(*args, **kwargs):
         for _ in range(3):
@@ -70,7 +63,6 @@ def aunthenticator(func):
 
 @aunthenticator
 def view_dashboard():
-    """Protected function that displays a dummy admin dashboard."""
     print("Welcome to the admin dashboard.")
     print("Its a dummy dashboard for now.\n")
     print("-" * 40)
@@ -97,31 +89,33 @@ if __name__ == "__main__":
             print("❗ Invalid choice. Please enter 1, 2, 3, or 4.\n")
 ```
 
-## Usage
+## ▶️ Usage
 
-1. **Clone the Repository**
+1. 🛠 **Clone the Repository**
    ```bash
    git clone https://github.com/muhammad-usman-py/user-auth-system.git
    cd user-auth-system
    ```
-2. **Run the Script**
+
+2. 🚀 **Run the Script**
    ```bash
    python user_auth_system.py
    ```
-3. **Follow On-Screen Prompts:**
-   - Select `1` to register a new user.
-   - Select `2` to change an existing user's password.
-   - Select `3` to login to the dashboard (three attempts allowed).
-   - Select `4` to exit the application.
 
-## Contributing
+3. 📋 **Interact with Menu Options:**
+   - Register a new user
+   - Change existing password
+   - Authenticate and access dashboard
+   - Exit the app
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve functionality, add features, or enhance security.
+## 🤝 Contributing
 
-## License
+Contributions are welcome! Open issues or submit pull requests for improvements or new features.
+
+## 📄 License
 
 This project is licensed under the MIT License.
 
 ---
 
-*Created by Muhammad Usman*
+💻 *Created by Muhammad Usman*
